@@ -79,7 +79,7 @@ extension MyService: TargetType {
         return Data()
     }
     var headers: [String : String]? {
-        return ["Content-Type": "application/json"]
+        return ["Content-Type": "application/jsonpos"]
     }
     public var validationType: ValidationType {
       return .successCodes

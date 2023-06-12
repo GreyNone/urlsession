@@ -43,26 +43,26 @@ class DescriptionViewController: UIViewController {
 //        }
         
         tableView.register(DescriptionTableViewCell.nib, forCellReuseIdentifier: DescriptionTableViewCell.identifier)
-        getStarships(list: list)
+//        getStarships(list: list)
     }
     
-    func getStarships(list: [String]) {
-        let fetchGroup = DispatchGroup()
-        var items: [Starship] = []
-        list.forEach { (url) in
-            fetchGroup.enter()
-            AF.request(url).validate().responseDecodable(of: Starship.self) { (response) in
-                if let value = response.value {
-                    items.append(value)
-                }
-                fetchGroup.leave()
-            }
-        }
-        
-        fetchGroup.notify(queue: .main) { [weak self] in
-            self?.starships = items
-        }
-    }
+//    func getStarships(list: [String]) {
+//        let fetchGroup = DispatchGroup()
+//        var items: [Starship] = []
+//        list.forEach { (url) in
+//            fetchGroup.enter()
+//            AF.request(url).validate().responseDecodable(of: Starship.self) { (response) in
+//                if let value = response.value {
+//                    items.append(value)
+//                }
+//                fetchGroup.leave()
+//            }
+//        }
+//        
+//        fetchGroup.notify(queue: .main) { [weak self] in
+//            self?.starships = items
+//        }
+//    }
 }
 
 extension DescriptionViewController: UITableViewDelegate, UITableViewDataSource {
