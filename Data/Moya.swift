@@ -26,9 +26,15 @@ struct Breed: Decodable {
 
 struct Breeds: Decodable {
     var data: [Breed]
+    var currentPage: Int
+    var lastPage: Int
+    var nextPageUrl: String
     
     enum CodingKeys: String, CodingKey {
         case data
+        case currentPage = "current_page"
+        case lastPage = "last_page"
+        case nextPageUrl = "next_page_url"
     }
 }
 
