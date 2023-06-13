@@ -3,4 +3,23 @@
    uuid = "7BDD9C41-F18B-4252-A744-516189F5A134"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0385726B-5E7D-4DC7-B00A-12FBF53A3D2E"
+            shouldBeEnabled = "No"
+            condition = "currentBreeds.nextPageUrl == &quot;https://catfact.ninja/breeds?page=4&quot; "
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "urlsession/View/MoyaViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "82"
+            endingLineNumber = "82"
+            landmarkName = "tableView(_:willDisplay:forRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

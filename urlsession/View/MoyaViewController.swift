@@ -7,11 +7,13 @@
 
 import UIKit
 import Moya
+import Alamofire
 
 class MoyaViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var breeds = [Breed]()
+    var currentBreeds: Breeds?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +25,8 @@ class MoyaViewController: UIViewController {
             switch result {
             case .success(let response):
                 do {
-                    self?.breeds = try response.map((Breeds).self).data
+                    self?.currentBreeds = try response.map((Breeds).self)
+                    self?.breeds.append(contentsOf: try response.map((Breeds).self).data)
                     self?.tableView.reloadData()
                 } catch {
                     print(error)
@@ -32,6 +35,25 @@ class MoyaViewController: UIViewController {
                 break
             }
         }
+    }
+    
+    private func countPreviousRows(for sections: Int) -> Int {
+        guard sections >= 0 else { return 0 }
+        var rows = 0
+        var i = 0
+        repeat {
+            rows += self.tableView.numberOfRows(inSection: i)
+            i += 1
+        } while i < sections
+        return rows
+    }
+    
+    private func countAllRows() -> Int {
+        var rows = 0
+        for i in 0...tableView.numberOfSections - 1 {
+            rows += tableView.numberOfRows(inSection: i)
+        }
+        return rows
     }
 }
 
@@ -54,5 +76,17 @@ extension MoyaViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let currentBreeds = currentBreeds else { return }
+        if countPreviousRows(for: indexPath.section - 1) + indexPath.row == countAllRows() - 3 {
+            let request = AF.request(currentBreeds.nextPageUrl, method: HTTPMethod.get)
+            request.validate()
+                .responseDecodable(of: Breeds.self) { [weak self] (response) in
+                    guard let value = response.value else { return }
+                    self?.currentBreeds = value
+                    self?.breeds.append(contentsOf: value.data)
+                    self?.tableView.reloadData()
+                }
+        }
+    }
 }
