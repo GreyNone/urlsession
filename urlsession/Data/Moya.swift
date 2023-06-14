@@ -73,9 +73,10 @@ struct DogsImages: Decodable {
 
 enum MyService {
     case breeds
-    case nextBreeds
+    case nextBreeds(url: String)
     case facts
     case dogs
+    case dogsImages(url: String)
 }
 
 extension MyService: TargetType {
@@ -83,29 +84,35 @@ extension MyService: TargetType {
         switch self {
         case .breeds, .facts:
             return URL(string: "https://catfact.ninja")!
-        case .dogs:
-            return URL(string: "https://dog.ceo/api/breeds/list/all")!
+        case .nextBreeds(let url):
+            return URL(string: url)!
+        case .dogs, .dogsImages:
+            return URL(string: "https://dog.ceo/api")!
         }
     }
     var path: String {
         switch self {
         case .breeds:
             return "/breeds"
+        case .nextBreeds:
+            return ""
         case .facts:
             return "/facts"
         case .dogs:
-            return ""
+            return "/breeds/list/all"
+        case .dogsImages(let url):
+            return "/breed/" + url + "/images/random"
         }
     }
     var method: Moya.Method {
         switch self {
-        case .breeds, .facts, .dogs:
+        case .breeds, .nextBreeds, .facts, .dogs, .dogsImages:
             return .get
         }
     }
     var task: Task {
         switch self {
-        case .breeds, .facts, .dogs:
+        case .breeds, .nextBreeds, .facts, .dogs, .dogsImages:
             return .requestPlain
         }
     }

@@ -27,6 +27,7 @@
 		F36C619C2A3727020035754A /* BreedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F36C619A2A3727020035754A /* BreedTableViewCell.xib */; };
 		F3769D1D2A33479F0088D067 /* Starship.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3769D1C2A33479F0088D067 /* Starship.swift */; };
 		F3769D202A33495B0088D067 /* Starships.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3769D1F2A33495B0088D067 /* Starships.swift */; };
+		F3A2DD852A39DC6B0015734A /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A2DD842A39DC6B0015734A /* CacheManager.swift */; };
 		F3A33C852A31E76000AB13A0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A33C842A31E76000AB13A0 /* AppDelegate.swift */; };
 		F3A33C872A31E76000AB13A0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A33C862A31E76000AB13A0 /* SceneDelegate.swift */; };
 		F3A33C892A31E76000AB13A0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A33C882A31E76000AB13A0 /* ViewController.swift */; };
@@ -57,6 +58,7 @@
 		F36C619A2A3727020035754A /* BreedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreedTableViewCell.xib; sourceTree = "<group>"; };
 		F3769D1C2A33479F0088D067 /* Starship.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starship.swift; sourceTree = "<group>"; };
 		F3769D1F2A33495B0088D067 /* Starships.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Starships.swift; sourceTree = "<group>"; };
+		F3A2DD842A39DC6B0015734A /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		F3A33C812A31E76000AB13A0 /* urlsession.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = urlsession.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3A33C842A31E76000AB13A0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F3A33C862A31E76000AB13A0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				F3769D1F2A33495B0088D067 /* Starships.swift */,
 				F36C61972A371DCC0035754A /* Moya.swift */,
 				F3B06CEC2A388EA60083635F /* ImageService.swift */,
+				F3A2DD842A39DC6B0015734A /* CacheManager.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				F36C619B2A3727020035754A /* BreedTableViewCell.swift in Sources */,
 				F3B06CE72A386F850083635F /* DogsViewController.swift in Sources */,
 				F3A33C892A31E76000AB13A0 /* ViewController.swift in Sources */,
+				F3A2DD852A39DC6B0015734A /* CacheManager.swift in Sources */,
 				F3A33C852A31E76000AB13A0 /* AppDelegate.swift in Sources */,
 				F3769D1D2A33479F0088D067 /* Starship.swift in Sources */,
 				F31E920F2A3336E100563774 /* DescriptionViewController.swift in Sources */,

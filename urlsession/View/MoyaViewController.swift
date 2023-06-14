@@ -80,14 +80,17 @@ extension MoyaViewController: UITableViewDelegate, UITableViewDataSource {
         guard let currentBreeds = currentBreeds,
               let nextPageUrl = currentBreeds.nextPageUrl  else { return }
         if countPreviousRows(for: indexPath.section - 1) + indexPath.row == countAllRows() - 3 {
-            let request = AF.request(nextPageUrl, method: HTTPMethod.get)
-            request.validate()
-                .responseDecodable(of: Breeds.self) { [weak self] (response) in
-                    guard let value = response.value else { return }
-                    self?.currentBreeds = value
-                    self?.breeds.append(contentsOf: value.data)
+            let provider = MoyaProvider<MyService>()
+            provider.request(.nextBreeds(url: nextPageUrl)) { [weak self] result in
+                switch result {
+                case .success(let response):
+                    self?.currentBreeds = try? response.map(Breeds.self)
+                    self?.breeds.append(contentsOf: self?.currentBreeds?.data ?? [])
                     self?.tableView.reloadData()
+                case .failure(let error):
+                    print(error)
                 }
+            }
         }
     }
 }

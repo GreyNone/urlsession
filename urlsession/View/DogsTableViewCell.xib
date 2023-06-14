@@ -16,12 +16,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="322" height="92"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4z-l0-9gf">
-                        <rect key="frame" x="187" y="26" width="115" height="38"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vj4-a4-tEh">
                         <rect key="frame" x="0.0" y="0.0" width="137" height="92"/>
                         <constraints>
@@ -29,21 +23,47 @@
                             <constraint firstAttribute="height" constant="92" id="iF0-ZA-pBM"/>
                         </constraints>
                     </imageView>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="vg8-MK-7tU">
+                        <rect key="frame" x="34" y="27" width="69" height="38"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="69" id="Wc6-Bl-Ahh"/>
+                            <constraint firstAttribute="height" constant="38" id="b63-PP-6dQ"/>
+                        </constraints>
+                    </activityIndicatorView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SBk-to-Ccl">
+                        <rect key="frame" x="137" y="0.0" width="185" height="92"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="poodle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TcE-hf-4aR">
+                                <rect key="frame" x="66" y="35.666666666666664" width="53" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TcE-hf-4aR" firstAttribute="centerY" secondItem="SBk-to-Ccl" secondAttribute="centerY" id="1zc-HW-D9h"/>
+                            <constraint firstItem="TcE-hf-4aR" firstAttribute="centerX" secondItem="SBk-to-Ccl" secondAttribute="centerX" id="KGW-hG-PVi"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
                     <constraint firstItem="vj4-a4-tEh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="13f-a1-FDc"/>
-                    <constraint firstItem="V4z-l0-9gf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="26" id="AFm-iB-Ivk"/>
-                    <constraint firstAttribute="bottom" secondItem="vj4-a4-tEh" secondAttribute="bottom" id="P2O-oo-4nZ"/>
-                    <constraint firstAttribute="trailing" secondItem="V4z-l0-9gf" secondAttribute="trailing" constant="20" symbolic="YES" id="VJI-JO-GbT"/>
-                    <constraint firstAttribute="bottom" secondItem="V4z-l0-9gf" secondAttribute="bottom" constant="28" id="ihr-bB-fH1"/>
-                    <constraint firstItem="V4z-l0-9gf" firstAttribute="leading" secondItem="vj4-a4-tEh" secondAttribute="trailing" constant="50" id="tjo-0K-sjA"/>
-                    <constraint firstItem="vj4-a4-tEh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="wY7-gf-GSn"/>
+                    <constraint firstAttribute="bottom" secondItem="vj4-a4-tEh" secondAttribute="bottom" id="I4s-h7-z7k"/>
+                    <constraint firstAttribute="bottom" secondItem="SBk-to-Ccl" secondAttribute="bottom" id="OiL-37-NDl"/>
+                    <constraint firstItem="vg8-MK-7tU" firstAttribute="centerY" secondItem="vj4-a4-tEh" secondAttribute="centerY" id="bXz-et-NH6"/>
+                    <constraint firstItem="vj4-a4-tEh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="lKw-i5-rot"/>
+                    <constraint firstItem="vg8-MK-7tU" firstAttribute="centerX" secondItem="vj4-a4-tEh" secondAttribute="centerX" id="n6H-qp-yHt"/>
+                    <constraint firstItem="SBk-to-Ccl" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="q8q-lz-Fj2"/>
+                    <constraint firstAttribute="trailing" secondItem="SBk-to-Ccl" secondAttribute="trailing" id="sjs-Dg-gnc"/>
+                    <constraint firstItem="SBk-to-Ccl" firstAttribute="leading" secondItem="vj4-a4-tEh" secondAttribute="trailing" id="v1z-pa-ExK"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="activityIndicatorView" destination="vg8-MK-7tU" id="WIQ-H9-nw8"/>
                 <outlet property="dogImageView" destination="vj4-a4-tEh" id="YE1-4N-HSz"/>
-                <outlet property="dogNameLabel" destination="V4z-l0-9gf" id="gp0-DA-1y6"/>
+                <outlet property="dogNameLabel" destination="TcE-hf-4aR" id="tCo-n5-G24"/>
             </connections>
             <point key="canvasLocation" x="131.29770992366412" y="5.6338028169014089"/>
         </tableViewCell>

@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import Alamofire
 import Moya
 
 class DogsViewController: UIViewController {
@@ -62,11 +61,7 @@ extension DogsViewController: UITableViewDelegate, UITableViewDataSource {
         let value = dogs[key]
         if let value = value {
             let count = value.count
-            if count == 0 {
-                return 1
-            } else {
-                return count
-            }
+            return count == 0 ? 1 : count
         }
         return 0
     }
@@ -76,29 +71,40 @@ extension DogsViewController: UITableViewDelegate, UITableViewDataSource {
               let dogs = dogs else { return DogsTableViewCell() }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: DogsTableViewCell.identifier) as! DogsTableViewCell
-        let key = keys[indexPath.section]
-        let value = dogs[key]
+        cell.activityIndicatorView.startAnimating()
         
-        if let value = value {
-            let count = value.count
-            if count == 0 {
-                cell.request = AF.request("https://dog.ceo/api/breed/" + key + "/images/random", method: HTTPMethod.get)
-                cell.request?.validate().responseDecodable(of: DogsImages.self) { (response) in
-                        guard let value = response.value else { return }
-                        let url = URL(string: value.message)!
-                        cell.configure(name: "", imageUrl: url)
-                    }
-            } else {
-                let dogName = value[indexPath.row]
-                cell.request = AF.request("https://dog.ceo/api/breed/" + key + "/images/random", method: HTTPMethod.get)
-                cell.request?.validate().responseDecodable(of: DogsImages.self) { (response) in
-                    guard let value = response.value else { return }
-                    let url = URL(string: value.message)!
-                    cell.configure(name: dogName, imageUrl: url)
+        let section = keys[indexPath.section]
+        guard let value = dogs[section] else { return DogsTableViewCell() }
+        
+        let count = value.count
+        let name = count == 0 ? nil : value[indexPath.row]
+        let key = count == 0 ? section : name! + section
+        
+        if let image = CacheManager.shared.getValue(for: key) {
+            cell.configure(name: name, image: image)
+            cell.activityIndicatorView.stopAnimating()
+            return cell
+        }
+        
+        let provider = MoyaProvider<MyService>()
+        cell.request = provider.request(.dogsImages(url: section)) { result in
+            switch result {
+            case .success(let response):
+                do {
+                    let url = try response.map(DogsImages.self).message
+                    cell.configure(name: name, imageUrl: URL(string: url)!, key: key)
+                } catch {
+                    print(error)
                 }
+            case .failure(let error):
+                print(error)
             }
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
