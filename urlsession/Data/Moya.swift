@@ -28,7 +28,7 @@ struct Breeds: Decodable {
     var data: [Breed]
     var currentPage: Int
     var lastPage: Int
-    var nextPageUrl: String
+    var nextPageUrl: String?
     
     enum CodingKeys: String, CodingKey {
         case data
@@ -54,30 +54,58 @@ struct Facts: Decodable {
     }
 }
 
+struct Dogs: Decodable {
+    var data: [String: [String]]
+    
+    enum CodingKeys: String, CodingKey {
+        case data = "message"
+    }
+}
+
+struct DogsImages: Decodable {
+    var message: String
+    
+    enum CodingKeys: String, CodingKey {
+        case message
+    }
+}
+
+
 enum MyService {
     case breeds
+    case nextBreeds
     case facts
+    case dogs
 }
 
 extension MyService: TargetType {
-    var baseURL: URL { URL(string: "https://catfact.ninja")! }
+    var baseURL: URL {
+        switch self {
+        case .breeds, .facts:
+            return URL(string: "https://catfact.ninja")!
+        case .dogs:
+            return URL(string: "https://dog.ceo/api/breeds/list/all")!
+        }
+    }
     var path: String {
         switch self {
         case .breeds:
             return "/breeds"
         case .facts:
             return "/facts"
+        case .dogs:
+            return ""
         }
     }
     var method: Moya.Method {
         switch self {
-        case .breeds, .facts:
+        case .breeds, .facts, .dogs:
             return .get
         }
     }
     var task: Task {
         switch self {
-        case .breeds, .facts:
+        case .breeds, .facts, .dogs:
             return .requestPlain
         }
     }

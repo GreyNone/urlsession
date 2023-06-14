@@ -77,9 +77,10 @@ extension MoyaViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard let currentBreeds = currentBreeds else { return }
+        guard let currentBreeds = currentBreeds,
+              let nextPageUrl = currentBreeds.nextPageUrl  else { return }
         if countPreviousRows(for: indexPath.section - 1) + indexPath.row == countAllRows() - 3 {
-            let request = AF.request(currentBreeds.nextPageUrl, method: HTTPMethod.get)
+            let request = AF.request(nextPageUrl, method: HTTPMethod.get)
             request.validate()
                 .responseDecodable(of: Breeds.self) { [weak self] (response) in
                     guard let value = response.value else { return }

@@ -21,28 +21,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         tableView.register(FilmTableViewCell.nib, forCellReuseIdentifier: "FilmTableViewCell")
-        getPosts()
-        fetchFilms()
+//        getPosts()
+//        fetchFilms()
     }
     
     //MARK: - Actions
     @IBAction func didClickOnButton(_ sender: Any) {
-//        let api = "https://catfact.ninja/fact"
-//        guard let url = URL(string: api) else { return }
-//
-//        let session = URLSession(configuration: .default)
-//
-//        let dataTask = session.dataTask(with: url) { data, urlResponse, error in
-//            guard let data = data, error == nil else { return }
-//
-//            DispatchQueue.main.async { [weak self] in
-//                guard let fact = try? JSONSerialization.jsonObject(with: data) as? NSDictionary,
-//                      let factString = fact["fact"] as? String else { return }
-//                self?.textView.text = factString
-//            }
-//        }
-//        dataTask.resume()
-        
         let provider = MoyaProvider<MyService>()
         provider.request(.facts) { result in
             switch result {
@@ -101,6 +85,12 @@ class ViewController: UIViewController {
         let moyaStoryboard = UIStoryboard(name: "MoyaStoryboard", bundle: nil)
         let moyaViewController = moyaStoryboard.instantiateViewController(withIdentifier: "MoyaViewController")
         self.navigationController?.pushViewController(moyaViewController, animated: true)
+    }
+    
+    @IBAction func goToDogs(_ sender: Any) {
+        let dogsStoryboard = UIStoryboard(name: "DogsStoryboard", bundle: nil)
+        let dogsViewController = dogsStoryboard.instantiateViewController(withIdentifier: "DogsViewController")
+        self.navigationController?.pushViewController(dogsViewController, animated: true)
     }
     
     private func fetchFilms() {

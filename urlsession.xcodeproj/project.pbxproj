@@ -34,6 +34,11 @@
 		F3A33C8E2A31E76100AB13A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3A33C8D2A31E76100AB13A0 /* Assets.xcassets */; };
 		F3A33C912A31E76100AB13A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3A33C8F2A31E76100AB13A0 /* LaunchScreen.storyboard */; };
 		F3A33C9B2A31F4DC00AB13A0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3A33C9A2A31F4DC00AB13A0 /* Post.swift */; };
+		F3B06CE52A386F0B0083635F /* DogsStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3B06CE42A386F0B0083635F /* DogsStoryboard.storyboard */; };
+		F3B06CE72A386F850083635F /* DogsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B06CE62A386F850083635F /* DogsViewController.swift */; };
+		F3B06CEA2A3870510083635F /* DogsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B06CE82A3870510083635F /* DogsTableViewCell.swift */; };
+		F3B06CEB2A3870510083635F /* DogsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F3B06CE92A3870510083635F /* DogsTableViewCell.xib */; };
+		F3B06CED2A388EA60083635F /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3B06CEC2A388EA60083635F /* ImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +66,11 @@
 		F3A33C902A31E76100AB13A0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3A33C922A31E76100AB13A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3A33C9A2A31F4DC00AB13A0 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		F3B06CE42A386F0B0083635F /* DogsStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DogsStoryboard.storyboard; sourceTree = "<group>"; };
+		F3B06CE62A386F850083635F /* DogsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsViewController.swift; sourceTree = "<group>"; };
+		F3B06CE82A3870510083635F /* DogsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogsTableViewCell.swift; sourceTree = "<group>"; };
+		F3B06CE92A3870510083635F /* DogsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DogsTableViewCell.xib; sourceTree = "<group>"; };
+		F3B06CEC2A388EA60083635F /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +98,7 @@
 				F3769D1C2A33479F0088D067 /* Starship.swift */,
 				F3769D1F2A33495B0088D067 /* Starships.swift */,
 				F36C61972A371DCC0035754A /* Moya.swift */,
+				F3B06CEC2A388EA60083635F /* ImageService.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -107,6 +118,10 @@
 				F36C61952A371BB20035754A /* MoyaStoryboard.storyboard */,
 				F36C61992A3727020035754A /* BreedTableViewCell.swift */,
 				F36C619A2A3727020035754A /* BreedTableViewCell.xib */,
+				F3B06CE62A386F850083635F /* DogsViewController.swift */,
+				F3B06CE42A386F0B0083635F /* DogsStoryboard.storyboard */,
+				F3B06CE82A3870510083635F /* DogsTableViewCell.swift */,
+				F3B06CE92A3870510083635F /* DogsTableViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -217,6 +232,8 @@
 				F36C619C2A3727020035754A /* BreedTableViewCell.xib in Resources */,
 				F3A33C8E2A31E76100AB13A0 /* Assets.xcassets in Resources */,
 				F3A33C8C2A31E76000AB13A0 /* Main.storyboard in Resources */,
+				F3B06CE52A386F0B0083635F /* DogsStoryboard.storyboard in Resources */,
+				F3B06CEB2A3870510083635F /* DogsTableViewCell.xib in Resources */,
 				F31E92112A33379F00563774 /* DescriptionStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -230,15 +247,18 @@
 			files = (
 				F31E920C2A33309900563774 /* FilmTableViewCell.swift in Sources */,
 				F31E92072A33158D00563774 /* Film.swift in Sources */,
+				F3B06CEA2A3870510083635F /* DogsTableViewCell.swift in Sources */,
 				F3769D202A33495B0088D067 /* Starships.swift in Sources */,
 				F36C61982A371DCC0035754A /* Moya.swift in Sources */,
 				F31E92092A332E4000563774 /* Films.swift in Sources */,
 				F36C61932A371B4A0035754A /* MoyaViewController.swift in Sources */,
 				F36C619B2A3727020035754A /* BreedTableViewCell.swift in Sources */,
+				F3B06CE72A386F850083635F /* DogsViewController.swift in Sources */,
 				F3A33C892A31E76000AB13A0 /* ViewController.swift in Sources */,
 				F3A33C852A31E76000AB13A0 /* AppDelegate.swift in Sources */,
 				F3769D1D2A33479F0088D067 /* Starship.swift in Sources */,
 				F31E920F2A3336E100563774 /* DescriptionViewController.swift in Sources */,
+				F3B06CED2A388EA60083635F /* ImageService.swift in Sources */,
 				F3A33C9B2A31F4DC00AB13A0 /* Post.swift in Sources */,
 				F31E92142A33383900563774 /* DescriptionTableViewCell.swift in Sources */,
 				F3A33C872A31E76000AB13A0 /* SceneDelegate.swift in Sources */,
